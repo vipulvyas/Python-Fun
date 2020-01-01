@@ -1,0 +1,167 @@
+<------------------------------------------------------------------------------------------------->
+#include<stdio.h>
+#include<stdlib.h>
+void main()
+{
+	char a[3],temp;
+	
+	printf("Enter a sequence (sender side):");
+	scanf("%s",a);
+	int key,i;
+	printf("Enter a key:");
+	scanf("%d",&key);
+	for(i=0;i<3;i++)
+	{
+		if(a[i]<91 && a[i]>=65)
+		{
+			a[i]=(a[i]-65);
+			temp=(a[i]-key)%26;
+			if(temp<0)
+				temp=temp+26;
+			a[i]=temp+65;
+		}
+		if(a[i]<123 && a[i]>=97)
+		{
+			a[i]=(a[i]-97);
+			temp=(a[i]-key)%26;
+			if(temp<0)
+				temp=temp+26;
+			a[i]=temp+97;
+		}
+	}
+	printf("Cipher Text:");
+	printf("%s",a);
+	
+	for(i=0;i<3;i++)
+	{
+		if(a[i]<91 && a[i]>=65)
+		{
+			a[i]=(a[i]-65);
+			temp=(a[i]+key)%26;
+			if(temp<0)
+				temp=temp+26;
+			a[i]=temp+65;
+		}
+		if(a[i]<123 && a[i]>=97)
+		{
+			a[i]=(a[i]-97);
+			temp=(a[i]+key)%26;
+			if(temp<0)
+				temp=temp+26;
+			a[i]=temp+97;
+		}
+	}
+	printf("\nOrignal Text:");
+	printf("%s",a);
+	
+}
+<------------------------------------------------------------------------------------------------->
+2.
+#include<stdio.h>
+#include<stdlib.h>
+void main()
+{
+	char a[3],b[3],o[3];
+	printf("Enter a sequence (sender side):");
+	scanf("%s",a);
+	int i,j;
+	printf("Cipher Text:");
+	for(i=0;i<3;i++)
+	{
+		j=(i-2)%3;
+		if(j<0)
+			j=j+3;
+		b[j]=a[i];
+	}
+	printf("%s",b);
+	printf("\nOrignal Text:");
+	for(i=0;i<3;i++)
+	{
+		j=(i-1)%3;
+		if(j<0)
+			j=j+3;
+		o[j]=b[i];
+	}
+	printf("%s",o);
+}
+<----------------------------------------------------------------------------->
+
+3.
+
+#include<stdio.h>
+#include<stdlib.h>
+void main()
+{
+	char a[3],temp;
+	
+	printf("Enter a sequence (sender side):");
+	scanf("%s",a);
+	int key,i;
+	printf("Enter a key:");
+	scanf("%d",&key);
+	for(i=0;i<3;i++)
+	{
+		if(a[i]<91 && a[i]>=65)
+		{
+			a[i]=(a[i]-65);
+			temp=(a[i]*key)%26;
+			if(temp<0)
+				temp=temp+26;
+			a[i]=temp+65;
+		}
+		if(a[i]<123 && a[i]>=97)
+		{
+			a[i]=(a[i]-97);
+			temp=(a[i]*key)%26;
+			if(temp<0)
+				temp=temp+26;
+			a[i]=temp+97;
+		}
+	}
+	printf("Cipher Text:");
+	printf("%s",a);	
+	
+	
+}
+<-------------------------------------------------------------------------------------->
+4.
+
+#include<stdio.h>
+#include<stdlib.h>
+void main()
+{
+	char a[10],temp;
+	
+	printf("Enter a phone number (sender side):");
+	scanf("%s",a);
+	int key,i;
+	printf("Enter a key:");
+	scanf("%d",&key);
+	for(i=0;i<3;i++)
+	{
+		
+		if(a[i]<58 && a[i]>=48)
+		{
+			a[i]=(a[i]-key);
+			if(a[i]<48)
+				a[i]=a[i]+10;
+		}
+	}
+	printf("Cipher Text:");
+	printf("%s",a);
+	
+	for(i=0;i<3;i++)
+	{
+		if(a[i]<58 && a[i]>=48)
+		{
+			a[i]=(a[i]+key);
+			if(a[i]>57)
+				a[i]=a[i]-10;
+		}
+	}
+	printf("\nOrignal Text:");
+	printf("%s",a);
+	
+}
+
+<------------------------------------------------------------------------------------------------>

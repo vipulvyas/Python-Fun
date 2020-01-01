@@ -1,0 +1,203 @@
+<--------------------------------------------------------------------------------------->
+1.
+
+#include<stdio.h>
+#include<stdlib.h>
+int get_key(int a,int b)
+{
+	int r1=a,r2=b,q,r;
+	while(r2>0)
+	{
+		q=r1/r2;
+		r=r1-q*r2;
+		r1=r2;
+		r2=r;
+	}
+	if(r1==1)
+		return a;
+	else
+		return get_key(rand()%26,b);
+}
+
+int multi_inverse(int n,int a)
+{
+	int r1=n,r2=a,t1=0,t2=1,r,t,q;
+	while(r2>0)
+	{
+		q=r1/r2;
+		r=r1-q*r2;
+		r1=r2;
+		r2=r;
+		t=t1-q*t2;
+		t1=t2;
+		t2=t;
+	}	
+	if(r1==1)
+		if(t1<0)
+			return t1+26;
+		else
+			return t1;
+}
+void main()
+{
+	int n;
+	printf("Enter a sequence size (sender side):");
+	scanf("%d",&n);
+	char a[n],temp;	
+	printf("Enter a sequence (sender side):");
+	scanf("%s",a);
+	int key,i,ikey;
+	srand(time(0));
+	key = get_key(rand()%26,26);
+	printf("%d\n",key);
+	printf("Cipher Text:");
+	for(i=0;i<n;i++)
+	{
+		if(a[i]<91 && a[i]>=65)
+		{
+			a[i]=(a[i]-65);
+			temp=(a[i]*key)%26;
+			if(temp<0)
+				temp=temp+26;
+			a[i]=temp+65;
+		}
+		if(a[i]<123 && a[i]>=97)
+		{
+			a[i]=(a[i]-97);
+			temp=(a[i]*key)%26;
+			if(temp<0)
+				temp=temp+26;
+			a[i]=temp+97;
+		}
+		printf("%c",a[i]);	
+	}
+	ikey = multi_inverse(26,key);
+	printf("\nOrignal Text:");
+	for(i=0;i<n;i++)
+	{
+		if(a[i]<91 && a[i]>=65)
+		{
+			a[i]=(a[i]-65);
+			temp=(a[i]*ikey)%26;
+			if(temp<0)
+				temp=temp+26;
+			a[i]=temp+65;
+		}
+		if(a[i]<123 && a[i]>=97)
+		{
+			a[i]=(a[i]-97);
+			temp=(a[i]*ikey)%26;
+			if(temp<0)
+				temp=temp+26;
+			a[i]=temp+97;
+		}
+		printf("%c",a[i]);	
+	}
+}
+
+<------------------------------------------------------------------------------------------------>
+
+2.Affine cipher
+
+#include<stdio.h>
+#include<stdlib.h>
+int get_key(int a,int b)
+{
+	int r1=a,r2=b,q,r;
+	while(r2>0)
+	{
+		q=r1/r2;
+		r=r1-q*r2;
+		r1=r2;
+		r2=r;
+	}
+	if(r1==1)
+		return a;
+	else
+		return get_key(rand()%26,b);
+}
+
+int multi_inverse(int n,int a)
+{
+	int r1=n,r2=a,t1=0,t2=1,r,t,q;
+	while(r2>0)
+	{
+		q=r1/r2;
+		r=r1-q*r2;
+		r1=r2;
+		r2=r;
+		t=t1-q*t2;
+		t1=t2;
+		t2=t;
+	}	
+	if(r1==1)
+		if(t1<0)
+			return t1+26;
+		else
+			return t1;
+}
+void main()
+{
+	int n;
+	printf("Enter a sequence size (sender side):");
+	scanf("%d",&n);
+	char a[n],temp;	
+	printf("Enter a sequence (sender side):");
+	scanf("%s",a);
+	int key1,key2,i,ikey1,ikey2;
+	srand(time(0));
+	key1 = get_key(rand()%26,26);
+	key2 = rand()%26;
+	printf("Cipher Text:");
+	for(i=0;i<n;i++)
+	{
+		if(a[i]<91 && a[i]>=65)
+		{
+			a[i]=(a[i]-65);
+			temp=(a[i]*key1+key2)%26;
+			if(temp<0)
+				temp=temp+26;
+			a[i]=temp+65;
+		}
+		if(a[i]<123 && a[i]>=97)
+		{
+			a[i]=(a[i]-97);
+			temp=(a[i]*key1+key2)%26;
+			if(temp<0)
+				temp=temp+26;
+			a[i]=temp+97;
+		}
+		printf("%c",a[i]);	
+	}
+	ikey2 = (26-key2)%26;
+	ikey1 = multi_inverse(26,key1);
+	printf("\nOrignal Text:");
+	for(i=0;i<n;i++)
+	{
+		if(a[i]<91 && a[i]>=65)
+		{
+			a[i]=(a[i]-65);
+			temp=((a[i]+ikey2)*ikey1)%26;
+			if(temp<0)
+				temp=temp+26;
+			a[i]=temp+65;
+		}
+		if(a[i]<123 && a[i]>=97)
+		{
+			a[i]=(a[i]-97);
+			temp=((a[i]+ikey2)*ikey1)%26;
+			if(temp<0)
+				temp=temp+26;
+			a[i]=temp+97;
+		}
+		printf("%c",a[i]);	
+	}
+}
+
+
+
+<----------------------------------------------------------------------------------------------->
+
+
+
+
