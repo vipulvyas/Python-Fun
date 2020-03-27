@@ -25,15 +25,16 @@ for row in all_rows:
         elif len(stat) == 6:
             stats.append(stat)
 
-stats[-1][1] = "Total Cases"
-stats.remove(stats[-1])
+#stats[-1][1] = "Total Cases"
+#stats.remove(stats[-1])
 objects = []
 for row in stats:
     objects.append(row[1])
 y_pos = np.arange(len(objects))
 performance = []
 for row in stats:
-    performance.append(int(row[2]) + int(row[3]))
+    #performance.append(int(row[2]) + int(row[3]))
+    performance.append(str(row[2]) + str(row[3]))
 
 table = tabulate(stats, headers = SHORT_HEADERS)
 print(table)
