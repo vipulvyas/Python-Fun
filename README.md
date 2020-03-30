@@ -6,6 +6,8 @@ keylogger save log on system which near 1 kb file which contain encrypted data a
 ## Gmail Brute Force Basic
 ## Python Network Programing
 ## Wifi Password Extrecter
-## Crypto graphic Agorithms Basic ::: ### Basic Algo.
-## Corona Live Status in India and World  ::: ### Web Scrapping
+## Crypto graphic Agorithms Basic 
+### Basic Algo.
+## Corona Live Status in India and World  
+### Web Scrapping
 
